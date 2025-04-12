@@ -1,13 +1,47 @@
-# In Vitro Pulsatile Flow Thrombogenicity Tester for Mechanical Heart Valves
+# Cardiac Pulsatile Flow Simulator
 
-A specialized testing apparatus designed to evaluate the thrombogenic potential of mechanical heart valves under pulsatile flow conditions. This project aims to provide a controlled in vitro environment for assessing the blood-material interactions and potential thrombosis risks in mechanical heart valve designs.
+## Overview
 
-## Project Overview
+This system simulates the pulsatile flow patterns of a human heart using a stepper motor controller. It is specifically designed for laboratory testing of heart valves in controlled fluid loop experiments.
 
-The Pulsatile Flow Tester is designed to:
+## Features
 
-- Simulate physiological flow conditions through mechanical heart valves
-- Evaluate thrombogenicity under controlled conditions
-- Measure and analyze flow dynamics
-- Assess blood-material interface interactions
-- Provide quantitative data for valve performance analysis
+- Physiologically accurate cardiac cycle simulation
+- Distinct systole (contraction) and diastole (relaxation) phases
+- Configurable heart rate (default 60 BPM)
+- Adjustable stroke volume (default 70ml)
+- Precisely timed valve closure at systole/diastole transition
+- Asymmetric acceleration/deceleration profiles for realistic flow patterns
+- Closed-loop control with real-time parameter adjustment
+
+## Hardware Requirements
+
+- Arduino-compatible microcontroller board
+- Stepper motor driver (DM860I or compatible)
+- NEMA stepper motor (34HS38-5204S or equivalent)
+- Power supply for the stepper driver (24-80V DC)
+- Custom fluid loop with heart valve test setup
+
+## Technical Specifications
+
+- Heart rate range: 30-120 BPM (adjustable)
+- Default stroke volume: 70ml per cycle (adjustable)
+- Tube inner diameter: 25.4mm
+- Loop center diameter: 12 inches
+- Systole phase: 33% of cardiac cycle
+- Diastole phase: 67% of cardiac cycle
+- Communication: Serial (115200 baud)
+
+## System Architecture
+
+The control system uses the AccelStepper library to manage precise movement profiles. The cardiac cycle is divided into two primary phases:
+
+1. **Systole (Contraction)**: Rapid clockwise movement with high acceleration
+2. **Diastole (Relaxation)**: Gentler counterclockwise return with lower acceleration
+
+Valve closure is synchronized to occur precisely at the transition from systole to diastole.
+
+## Dependencies
+
+- AccelStepper library
+- Arduino core libraries
