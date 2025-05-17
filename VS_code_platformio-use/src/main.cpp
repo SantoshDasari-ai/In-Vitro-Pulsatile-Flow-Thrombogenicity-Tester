@@ -12,7 +12,7 @@ constexpr int STEPS = 600;    // Number of steps per phase (half of 400 steps/re
 constexpr int HEART_RATE = 60; // Target heart rate in beats per minute
 
 // Overall runtime in seconds
-constexpr unsigned long RUNTIME_SECONDS = 2700; // Set runtime here (e.g., 60 seconds)
+constexpr unsigned long RUNTIME_SECONDS = 15; // Set runtime here (e.g., 60 seconds)
 unsigned long runtimeMillis = RUNTIME_SECONDS * 1000UL; // Convert runtime to milliseconds
 unsigned long startMillis;
 unsigned long lastStepTime = 0;
@@ -100,7 +100,7 @@ void initializeSystoleState() {
   currentState = State::SYSTOLE_ACCEL;
   currentStep = 0;
   cyclePosition = 0;
-  calculateDelays(0.045, 1);  // Faster acceleration for systole (contraction) phase
+  calculateDelays(0.05, 1);  // Faster acceleration for systole (contraction) phase
   setDirection(true);  // clockwise for systole (contraction)
 }
 
@@ -152,7 +152,7 @@ void loop() {
         currentStep++;
         if (currentStep >= STEPS) {
           currentStep = 0;
-          calculateDelays(0.015, 15);  // Slower acceleration for diastole (relaxation) phase
+          calculateDelays(0.02 , 15);  // Slower acceleration for diastole (relaxation) phase
           setDirection(false);  // counter-clockwise for diastole (relaxation)
           currentState = State::DIASTOLE_ACCEL;
         }
@@ -190,7 +190,7 @@ void loop() {
             } else {
               // Otherwise continue with next cycle
               currentState = State::CYCLE_COMPLETE;
-              calculateDelays(0.045, 1);  // Faster acceleration for next systole (contraction)
+              calculateDelays(0.05, 1);  // Faster acceleration for next systole (contraction)
               setDirection(true);  // clockwise for next systole (contraction)
               currentStep = 0;
             }
@@ -215,7 +215,7 @@ void loop() {
             currentState = State::SHUTDOWN;
           } else {
             currentState = State::CYCLE_COMPLETE;
-            calculateDelays(0.045, 1);  // Reset to systole speed for next cycle
+            calculateDelays(0.05, 1);  // Reset to systole speed for next cycle
             setDirection(true);  // clockwise for systole
             currentStep = 0;
           }
