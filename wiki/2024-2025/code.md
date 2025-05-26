@@ -1,10 +1,6 @@
----
-description: 'Motor Control Code:'
----
+# Motor Control
 
-# Final Code May 2025
-
-[Link to code](../../../code_versions/100mlSV.cpp)
+[Link to code](../../code_versions/100mlSV.cpp)
 
 ````
 #include "main.h"

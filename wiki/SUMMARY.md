@@ -6,8 +6,11 @@
 
 * [Design](2024-2025/design/README.md)
   * [Hardware](2024-2025/design/hardware.md)
-* [Code](2024-2025/code/README.md)
-  * [Final Code May 2025](2024-2025/code/final-code-may-2025.md)
+* [Motor Control](2024-2025/code.md)
+
+***
+
+* [Testing](testing.md)
 
 ## Future Work&#x20;
 
